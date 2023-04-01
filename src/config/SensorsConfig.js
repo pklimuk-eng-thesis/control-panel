@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:8080';
+export const CONTROL_STATION_ADDRESS = process.env.REACT_APP_CONTROL_STATION_ADDRESS;
 export const SENSOR_ENABLED_ENDPOINT = 'enabled'
 export const SENSOR_DETECTED_ENDPOINT = 'detected'
 

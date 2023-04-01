@@ -1,7 +1,7 @@
-import { BASE_URL, SENSOR_DETECTED_ENDPOINT, SENSOR_ENABLED_ENDPOINT } from '../../config/SensorsConfig';
+import { CONTROL_STATION_ADDRESS, SENSOR_DETECTED_ENDPOINT, SENSOR_ENABLED_ENDPOINT } from '../../config/SensorsConfig';
 
 export const fetchSensorDetectionStatus = async (sensorId) => {
-  const response = await fetch(`${BASE_URL}/${sensorId}/${SENSOR_DETECTED_ENDPOINT}`);
+  const response = await fetch(`${CONTROL_STATION_ADDRESS}/${sensorId}/${SENSOR_DETECTED_ENDPOINT}`);
   if (!response.ok) {
     return false;
   }
@@ -10,7 +10,7 @@ export const fetchSensorDetectionStatus = async (sensorId) => {
 };
 
 export const fetchSensorState = async (sensorId) => {
-  const response = await fetch(`${BASE_URL}/${sensorId}/${SENSOR_ENABLED_ENDPOINT}`);
+  const response = await fetch(`${CONTROL_STATION_ADDRESS}/${sensorId}/${SENSOR_ENABLED_ENDPOINT}`);
   if (!response.ok) {
     return false;
   }
@@ -19,7 +19,7 @@ export const fetchSensorState = async (sensorId) => {
 };
 
 export const changeSensorState = async (sensorId) => {
-  const response = await fetch(`${BASE_URL}/${sensorId}/${SENSOR_ENABLED_ENDPOINT}`, {
+  const response = await fetch(`${CONTROL_STATION_ADDRESS}/${sensorId}/${SENSOR_ENABLED_ENDPOINT}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const changeSensorState = async (sensorId) => {
 }
 
 export const changeSensorDetectionStatus = async (sensorId) => {
-  const response = await fetch(`${BASE_URL}/${sensorId}/${SENSOR_DETECTED_ENDPOINT}`, {
+  const response = await fetch(`${CONTROL_STATION_ADDRESS}/${sensorId}/${SENSOR_DETECTED_ENDPOINT}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
