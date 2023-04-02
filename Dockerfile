@@ -7,7 +7,7 @@ RUN npm install
 RUN npm run build
 
 
-FROM nginx:latest
+FROM nginx:stable-alpine-slim
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 COPY --from=builder /src/build .
