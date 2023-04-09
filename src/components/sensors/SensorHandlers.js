@@ -1,11 +1,12 @@
 import { SENSORS_CONFIG } from "../../config/SensorsConfig";
-import { fetchSensorState, fetchSensorDetectionStatus, changeSensorState, changeSensorDetectionStatus } from "../sensors/SensorsApi";
+import { fetchSensorInfo, changeSensorState, changeSensorDetectionStatus } from "../sensors/SensorsApi";
 
 export async function fetchSensorsData() {
   const sensorsData = await Promise.all(
     SENSORS_CONFIG.map(async (sensorConfig) => {
-      const sensorState = await fetchSensorState(sensorConfig.serviceName);
-      const sensorStatus = await fetchSensorDetectionStatus(sensorConfig.serviceName);
+      const sensorInfo = await fetchSensorInfo(sensorConfig.serviceName);
+      const sensorState = sensorInfo.enabled;
+      const sensorStatus = sensorInfo.detected;
       return {
         ...sensorConfig,
         state: sensorState,
@@ -17,12 +18,15 @@ export async function fetchSensorsData() {
 }
 
 export async function handleToggleState(updatedSensor, sensors, setSensors) {
-  const newSensorState = await changeSensorState(updatedSensor.serviceName);
+  const sensorInfo = await changeSensorState(updatedSensor.serviceName);
+  const newSensorState = sensorInfo.enabled;
+  const newSensorStatus = sensorInfo.detected;
   const updatedSensors = sensors.map((sensor) => {
     if (sensor.id === updatedSensor.id) {
       return {
         ...sensor,
         state: newSensorState,
+        detectionStatus: newSensorStatus,
       };
     }
     return sensor;
@@ -31,12 +35,15 @@ export async function handleToggleState(updatedSensor, sensors, setSensors) {
 }
 
 export async function handleToggleDetectionStatus(updatedSensor, sensors, setSensors) {
-  const newSensorDetectionStatus = await changeSensorDetectionStatus(updatedSensor.serviceName);
+  const sensorInfo = await changeSensorDetectionStatus(updatedSensor.serviceName);
+  const newSensorState = sensorInfo.enabled;
+  const newSensorStatus = sensorInfo.detected;
   const updatedSensors = sensors.map(sensor => {
     if (sensor.id === updatedSensor.id) {
       return {
         ...sensor,
-        detectionStatus: newSensorDetectionStatus,
+        state: newSensorState,
+        detectionStatus: newSensorStatus,
       };
     }
     return sensor;

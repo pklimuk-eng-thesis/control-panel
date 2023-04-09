@@ -14,7 +14,6 @@ function App() {
         <Layout />
         <div className={styles.content}>
           <Routes>
-            {/* <Route path='/' element={<SensorTable sensors={sensors} onToggleState={handleToggleState} />} /> */}
             <Route path='/' element={<DefaultPage sensors={sensors} />} />
             <Route path='/admin' element={<AdminPage sensors={sensors} />} />
           </Routes>
