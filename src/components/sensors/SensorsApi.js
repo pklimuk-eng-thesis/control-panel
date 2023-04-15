@@ -21,7 +21,7 @@ export const changeSensorState = async (sensorId) => {
   const response = await fetch(
     `${CONTROL_STATION_ADDRESS}/${sensorId}/${SENSOR_ENABLED_ENDPOINT}`,
     {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -38,7 +38,7 @@ export const changeSensorDetectionStatus = async (sensorId) => {
   const response = await fetch(
     `${CONTROL_STATION_ADDRESS}/${sensorId}/${SENSOR_DETECTED_ENDPOINT}`,
     {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
