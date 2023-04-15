@@ -1,10 +1,15 @@
-import React from 'react';
-import styles from './Layout.module.css';
+import React from "react";
+import styles from "./Layout.module.css";
 
 function Layout() {
   return (
     <div className={`${styles.header}`}>
-      <div className={styles.title}>Smart-home app</div>
+      <button
+        className={`${styles.button}`}
+        onClick={() => (window.location.href = `/`)}
+      >
+        Smart-home app
+      </button>
     </div>
   );
 }

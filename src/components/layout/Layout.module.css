@@ -11,3 +11,13 @@
   font-size: 30px;
   font-weight: bold;
 }
+
+.button {
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: #2b2d42;
+}
