@@ -1,5 +1,10 @@
 import { SENSORS_CONFIG } from "../../config/SensorsConfig";
-import { fetchSensorInfo, changeSensorState, changeSensorDetectionStatus, fetchSensorLogsLimitN } from "../sensors/SensorsApi";
+import {
+  fetchSensorInfo,
+  changeSensorState,
+  changeSensorDetectionStatus,
+  fetchSensorLogsLimitN,
+} from "../sensors/SensorsApi";
 
 export async function fetchSensorsData() {
   const sensorsData = await Promise.all(
@@ -34,11 +39,17 @@ export async function handleToggleState(updatedSensor, sensors, setSensors) {
   setSensors(updatedSensors);
 }
 
-export async function handleToggleDetectionStatus(updatedSensor, sensors, setSensors) {
-  const sensorInfo = await changeSensorDetectionStatus(updatedSensor.serviceName);
+export async function handleToggleDetectionStatus(
+  updatedSensor,
+  sensors,
+  setSensors
+) {
+  const sensorInfo = await changeSensorDetectionStatus(
+    updatedSensor.serviceName
+  );
   const newSensorState = sensorInfo.enabled;
   const newSensorStatus = sensorInfo.detected;
-  const updatedSensors = sensors.map(sensor => {
+  const updatedSensors = sensors.map((sensor) => {
     if (sensor.id === updatedSensor.id) {
       return {
         ...sensor,

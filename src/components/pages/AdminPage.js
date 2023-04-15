@@ -27,18 +27,18 @@ function AdminPage() {
   }, []);
 
   return (
-      <div>
-        <AdminLayout />
-        <SensorTableAdmin
-          sensors={sensors}
-          onToggleState={(updatedSensor) =>
-            handleToggleState(updatedSensor, sensors, setSensors)
-          }
-          onToggleDetectionStatus={(updatedSensor) =>
-            handleToggleDetectionStatus(updatedSensor, sensors, setSensors)
-          }
-        />
-      </div>
+    <div>
+      <AdminLayout />
+      <SensorTableAdmin
+        sensors={sensors}
+        onToggleState={(updatedSensor) =>
+          handleToggleState(updatedSensor, sensors, setSensors)
+        }
+        onToggleDetectionStatus={(updatedSensor) =>
+          handleToggleDetectionStatus(updatedSensor, sensors, setSensors)
+        }
+      />
+    </div>
   );
 }
 

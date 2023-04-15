@@ -1,8 +1,7 @@
-import React from 'react';
-import styles from './SensorTable.module.css';
+import React from "react";
+import styles from "./SensorTable.module.css";
 
 function SensorTableAdmin({ sensors, onToggleState, onToggleDetectionStatus }) {
-
   return (
     <div className={styles.sensorTable}>
       <h2 className={styles.title}>Sensors</h2>
@@ -26,27 +25,29 @@ function SensorTableAdmin({ sensors, onToggleState, onToggleDetectionStatus }) {
                   }`}
                   onClick={() => onToggleState(sensor)}
                 >
-                  {sensor.state ? 'On' : 'Off'}
+                  {sensor.state ? "On" : "Off"}
                 </button>
               </td>
               <td>
                 <button
-                    className={`${styles.button} ${
-                      sensor.detectionStatus ? styles.buttonOff : styles.buttonOn
-                    }`}
-                    onClick={() => onToggleDetectionStatus(sensor)}
-                  >
-                    {sensor.detectionStatus ? 'Detected' : 'NotDetected'}
-                  </button>
-                </td>
+                  className={`${styles.button} ${
+                    sensor.detectionStatus ? styles.buttonOff : styles.buttonOn
+                  }`}
+                  onClick={() => onToggleDetectionStatus(sensor)}
+                >
+                  {sensor.detectionStatus ? "Detected" : "NotDetected"}
+                </button>
+              </td>
               <td>
-              <button
-                className={`${styles.button} ${styles.historyButton}`}
-                onClick={() => window.location.href=`/history/${sensor.serviceName}`}
-              >
-                Show history
-              </button>
-            </td>
+                <button
+                  className={`${styles.button} ${styles.historyButton}`}
+                  onClick={() =>
+                    (window.location.href = `/history/${sensor.serviceName}`)
+                  }
+                >
+                  Show history
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

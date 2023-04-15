@@ -13,9 +13,12 @@ function App() {
       <BrowserRouter>
         <div className={styles.content}>
           <Routes>
-            <Route path='/' element={<DefaultPage sensors={sensors} />} />
-            <Route path='/admin' element={<AdminPage sensors={sensors} />} />
-            <Route path="/history/:sensorServiceName" element={<SensorHistoryPage sensors={sensors}/>} />
+            <Route path="/" element={<DefaultPage sensors={sensors} />} />
+            <Route path="/admin" element={<AdminPage sensors={sensors} />} />
+            <Route
+              path="/history/:sensorServiceName"
+              element={<SensorHistoryPage sensors={sensors} />}
+            />
           </Routes>
         </div>
       </BrowserRouter>

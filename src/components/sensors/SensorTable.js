@@ -1,8 +1,7 @@
-import React from 'react';
-import styles from './SensorTable.module.css';
+import React from "react";
+import styles from "./SensorTable.module.css";
 
 function SensorTable({ sensors, onToggleState }) {
-
   return (
     <div className={styles.sensorTable}>
       <h2 className={styles.title}>Sensors</h2>
@@ -26,16 +25,22 @@ function SensorTable({ sensors, onToggleState }) {
                   }`}
                   onClick={() => onToggleState(sensor)}
                 >
-                  {sensor.state ? 'On' : 'Off'}
+                  {sensor.state ? "On" : "Off"}
                 </button>
               </td>
-              <td className={sensor.detectionStatus ? styles.textRed : styles.textGreen}>
-                {sensor.detectionStatus ? 'Detected' : 'Not Detected'}
+              <td
+                className={
+                  sensor.detectionStatus ? styles.textRed : styles.textGreen
+                }
+              >
+                {sensor.detectionStatus ? "Detected" : "Not Detected"}
               </td>
               <td>
                 <button
                   className={`${styles.button} ${styles.historyButton}`}
-                  onClick={() => window.location.href=`history/${sensor.serviceName}`}
+                  onClick={() =>
+                    (window.location.href = `history/${sensor.serviceName}`)
+                  }
                 >
                   Show history
                 </button>

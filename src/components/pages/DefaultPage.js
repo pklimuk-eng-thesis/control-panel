@@ -25,7 +25,12 @@ export default function DefaultPage() {
   return (
     <div>
       <Layout />
-      <SensorTable sensors={sensors} onToggleState={(updatedSensor) => handleToggleState(updatedSensor, sensors, setSensors)} />
+      <SensorTable
+        sensors={sensors}
+        onToggleState={(updatedSensor) =>
+          handleToggleState(updatedSensor, sensors, setSensors)
+        }
+      />
     </div>
   );
 }
