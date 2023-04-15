@@ -3,6 +3,12 @@ import styles from './SensorTable.module.css';
 
 function SensorHistoryTable({sensorLogs, sensorName}) {
 
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    return new Intl.DateTimeFormat(navigator.language, options).format(date);
+  }
+
   return (
     <div className={styles.sensorTable}>
       <h2 className={styles.title}>{sensorName} History</h2>
@@ -17,7 +23,7 @@ function SensorHistoryTable({sensorLogs, sensorName}) {
         <tbody>
           {sensorLogs.map((sensorLog) => (
             <tr key={sensorLog.id}>
-              <td>{sensorLog.created_at}</td>
+              <td>{formatDate(sensorLog.created_at)}</td>
               <td className={sensorLog.is_enabled ? styles.textGreen : styles.textRed}>
                 {sensorLog.is_enabled ? 'On' : 'Off'}</td>
               <td className={sensorLog.detected ? styles.textRed : styles.textGreen}>
