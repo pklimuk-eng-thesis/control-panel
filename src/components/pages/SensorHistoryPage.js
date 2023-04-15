@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import SensorHistoryTable from "../sensors/SensorHistoryTable";
 import { handleLogsFetchingLimitN } from "../sensors/SensorHandlers";
 import { SENSORS_CONFIG } from "../../config/SensorsConfig";
+import Layout from "../layout/Layout";
 
 export default function SensorHistoryPage() {
   const { sensorServiceName } = useParams();
@@ -29,6 +30,7 @@ export default function SensorHistoryPage() {
 
   return (
     <div>
+      <Layout />
       <SensorHistoryTable sensorLogs={sensorLogs} sensorName={sensorName} />
     </div>
   );

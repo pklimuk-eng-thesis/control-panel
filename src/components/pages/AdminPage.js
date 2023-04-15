@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import SensorTableAdmin from "../sensors/SensorTableAdmin";
-import { fetchSensorsData, handleToggleState, handleToggleDetectionStatus } from "../sensors/SensorHandlers";
+import {
+  fetchSensorsData,
+  handleToggleState,
+  handleToggleDetectionStatus,
+} from "../sensors/SensorHandlers";
+import AdminLayout from "../layout/AdminLayout";
 
 function AdminPage() {
   const [sensors, setSensors] = useState([]);
@@ -22,12 +27,19 @@ function AdminPage() {
   }, []);
 
   return (
-    <div>
-      <SensorTableAdmin sensors={sensors} onToggleState={(updatedSensor) => handleToggleState(updatedSensor, sensors, setSensors)}
-      onToggleDetectionStatus={(updatedSensor) => handleToggleDetectionStatus(updatedSensor, sensors, setSensors)}/>
-    </div>
+      <div>
+        <AdminLayout />
+        <SensorTableAdmin
+          sensors={sensors}
+          onToggleState={(updatedSensor) =>
+            handleToggleState(updatedSensor, sensors, setSensors)
+          }
+          onToggleDetectionStatus={(updatedSensor) =>
+            handleToggleDetectionStatus(updatedSensor, sensors, setSensors)
+          }
+        />
+      </div>
   );
 }
-
 
 export default AdminPage;

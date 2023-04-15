@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SensorTable from "../sensors/SensorTable";
 import { fetchSensorsData, handleToggleState } from "../sensors/SensorHandlers";
+import Layout from "../layout/Layout";
 
 export default function DefaultPage() {
   const [sensors, setSensors] = useState([]);
@@ -23,6 +24,7 @@ export default function DefaultPage() {
 
   return (
     <div>
+      <Layout />
       <SensorTable sensors={sensors} onToggleState={(updatedSensor) => handleToggleState(updatedSensor, sensors, setSensors)} />
     </div>
   );
