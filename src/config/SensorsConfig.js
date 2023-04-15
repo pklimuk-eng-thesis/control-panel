@@ -2,6 +2,7 @@ export const CONTROL_STATION_ADDRESS = process.env.REACT_APP_CONTROL_STATION_ADD
 export const SENSOR_ENABLED_ENDPOINT = 'enabled'
 export const SENSOR_DETECTED_ENDPOINT = 'detected'
 export const SENSOR_INFO_ENDPOINT = 'info'
+export const SENSOR_LOGS_ENDPOINT = 'logs'
 
 export const SENSORS_CONFIG = [
   {

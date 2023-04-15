@@ -12,6 +12,7 @@ function SensorTable({ sensors, onToggleState }) {
             <th>Sensor Name</th>
             <th>State</th>
             <th>Detection Status</th>
+            <th>History</th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +29,17 @@ function SensorTable({ sensors, onToggleState }) {
                   {sensor.state ? 'On' : 'Off'}
                 </button>
               </td>
-              <td>{sensor.detectionStatus ? 'Detected' : 'NotDetected'}</td>
+              <td className={sensor.detectionStatus ? styles.textRed : styles.textGreen}>
+                {sensor.detectionStatus ? 'Detected' : 'Not Detected'}
+              </td>
+              <td>
+                <button
+                  className={`${styles.button} ${styles.historyButton}`}
+                  onClick={() => window.location.href=`history/${sensor.serviceName}`}
+                >
+                  Show history
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -1,5 +1,5 @@
 import { SENSORS_CONFIG } from "../../config/SensorsConfig";
-import { fetchSensorInfo, changeSensorState, changeSensorDetectionStatus } from "../sensors/SensorsApi";
+import { fetchSensorInfo, changeSensorState, changeSensorDetectionStatus, fetchSensorLogsLimitN } from "../sensors/SensorsApi";
 
 export async function fetchSensorsData() {
   const sensorsData = await Promise.all(
@@ -49,4 +49,9 @@ export async function handleToggleDetectionStatus(updatedSensor, sensors, setSen
     return sensor;
   });
   setSensors(updatedSensors);
+}
+
+export async function handleLogsFetchingLimitN(sensorName, limit) {
+  const sensorLogs = await fetchSensorLogsLimitN(sensorName, limit);
+  return sensorLogs;
 }

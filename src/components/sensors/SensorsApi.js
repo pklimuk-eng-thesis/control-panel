@@ -1,4 +1,5 @@
-import { CONTROL_STATION_ADDRESS, SENSOR_DETECTED_ENDPOINT, SENSOR_ENABLED_ENDPOINT, SENSOR_INFO_ENDPOINT } from '../../config/SensorsConfig';
+import { CONTROL_STATION_ADDRESS, SENSOR_DETECTED_ENDPOINT, SENSOR_ENABLED_ENDPOINT,
+   SENSOR_INFO_ENDPOINT, SENSOR_LOGS_ENDPOINT } from '../../config/SensorsConfig';
 
 export const fetchSensorInfo = async (sensorId) => {
   const response = await fetch(`${CONTROL_STATION_ADDRESS}/${sensorId}/${SENSOR_INFO_ENDPOINT}`);
@@ -36,3 +37,12 @@ export const changeSensorDetectionStatus = async (sensorId) => {
   const data = await response.json();
   return data;
 }
+
+export const fetchSensorLogsLimitN = async (sensorId, limit) => {
+  const response = await fetch(`${CONTROL_STATION_ADDRESS}/${sensorId}/${SENSOR_LOGS_ENDPOINT}?limit=${limit}`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch sensor logs for sensor ${sensorId}.`);
+  }
+  const data = await response.json();
+  return data;
+};

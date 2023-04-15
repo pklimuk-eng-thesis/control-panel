@@ -12,6 +12,7 @@ function SensorTableAdmin({ sensors, onToggleState, onToggleDetectionStatus }) {
             <th>Sensor Name</th>
             <th>State</th>
             <th>Detection Status</th>
+            <th>History</th>
           </tr>
         </thead>
         <tbody>
@@ -31,13 +32,21 @@ function SensorTableAdmin({ sensors, onToggleState, onToggleDetectionStatus }) {
               <td>
                 <button
                     className={`${styles.button} ${
-                      sensor.detectionStatus ? styles.buttonOn : styles.buttonOff
+                      sensor.detectionStatus ? styles.buttonOff : styles.buttonOn
                     }`}
                     onClick={() => onToggleDetectionStatus(sensor)}
                   >
                     {sensor.detectionStatus ? 'Detected' : 'NotDetected'}
                   </button>
                 </td>
+              <td>
+              <button
+                className={`${styles.button} ${styles.historyButton}`}
+                onClick={() => window.location.href=`/history/${sensor.serviceName}`}
+              >
+                Show history
+              </button>
+            </td>
             </tr>
           ))}
         </tbody>

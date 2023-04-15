@@ -4,6 +4,7 @@ import Layout from "./components/layout/Layout";
 import styles from "./App.module.css";
 import AdminPage from "./components/pages/AdminPage";
 import DefaultPage from "./components/pages/DefaultPage";
+import SensorHistoryPage from "./components/pages/SensorHistoryPage";
 
 function App() {
   const [sensors] = useState([]);
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path='/' element={<DefaultPage sensors={sensors} />} />
             <Route path='/admin' element={<AdminPage sensors={sensors} />} />
+            <Route path="/history/:sensorServiceName" element={<SensorHistoryPage sensors={sensors}/>} />
           </Routes>
         </div>
       </BrowserRouter>

@@ -52,4 +52,16 @@
   font-weight: bold;
 }
 
+.historyButton {
+  background-color: #858585;
+}
 
+.textRed {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+.textGreen {
+  color: #5cb85c;
+  font-weight: bold;
+}
