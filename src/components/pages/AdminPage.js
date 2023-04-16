@@ -5,7 +5,10 @@ import {
   handleSensorToggleState,
   handleSensorToggleDetectionStatus,
 } from "../sensors/SensorHandlers";
-import { fetchDevicesData, handleDeviceToggleState } from "../devices/DeviceHandlers";
+import {
+  fetchDevicesData,
+  handleDeviceToggleState,
+} from "../devices/DeviceHandlers";
 import AdminLayout from "../layout/AdminLayout";
 import DeviceTable from "../devices/DeviceTable";
 
@@ -24,6 +27,9 @@ function AdminPage() {
       const intervalId = setInterval(async () => {
         const sensorsData = await fetchSensorsData();
         setSensors(sensorsData);
+
+        const devicesData = await fetchDevicesData();
+        setDevices(devicesData);
       }, 5000);
 
       return () => clearInterval(intervalId);
