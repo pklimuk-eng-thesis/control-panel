@@ -22,7 +22,7 @@ export async function fetchSensorsData() {
   return sensorsData;
 }
 
-export async function handleToggleState(updatedSensor, sensors, setSensors) {
+export async function handleSensorToggleState(updatedSensor, sensors, setSensors) {
   const sensorInfo = await changeSensorState(updatedSensor.serviceName);
   const newSensorState = sensorInfo.enabled;
   const newSensorStatus = sensorInfo.detected;
@@ -39,7 +39,7 @@ export async function handleToggleState(updatedSensor, sensors, setSensors) {
   setSensors(updatedSensors);
 }
 
-export async function handleToggleDetectionStatus(
+export async function handleSensorToggleDetectionStatus(
   updatedSensor,
   sensors,
   setSensors
@@ -62,7 +62,7 @@ export async function handleToggleDetectionStatus(
   setSensors(updatedSensors);
 }
 
-export async function handleLogsFetchingLimitN(sensorName, limit) {
+export async function handleSensorLogsFetchingLimitN(sensorName, limit) {
   const sensorLogs = await fetchSensorLogsLimitN(sensorName, limit);
   return sensorLogs;
 }

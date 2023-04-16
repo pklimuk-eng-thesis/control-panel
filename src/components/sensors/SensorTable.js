@@ -39,7 +39,7 @@ function SensorTable({ sensors, onToggleState }) {
                 <button
                   className={`${styles.button} ${styles.historyButton}`}
                   onClick={() =>
-                    (window.location.href = `history/${sensor.serviceName}`)
+                    (window.location.href = `/sensor/history/${sensor.serviceName}`)
                   }
                 >
                   Show history

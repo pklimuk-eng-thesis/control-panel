@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SensorHistoryTable from "../sensors/SensorHistoryTable";
-import { handleLogsFetchingLimitN } from "../sensors/SensorHandlers";
+import { handleSensorLogsFetchingLimitN } from "../sensors/SensorHandlers";
 import { SENSORS_CONFIG } from "../../config/SensorsConfig";
 import Layout from "../layout/Layout";
 
@@ -14,11 +14,11 @@ export default function SensorHistoryPage() {
 
   useEffect(() => {
     const fetchSensorDataAndLogs = async () => {
-      const logs = await handleLogsFetchingLimitN(sensorServiceName, 10);
+      const logs = await handleSensorLogsFetchingLimitN(sensorServiceName, 10);
       setSensorLogs(logs);
 
       const intervalId = setInterval(async () => {
-        const logs = await handleLogsFetchingLimitN(sensorServiceName, 10);
+        const logs = await handleSensorLogsFetchingLimitN(sensorServiceName, 10);
         setSensorLogs(logs);
       }, 5000);
 

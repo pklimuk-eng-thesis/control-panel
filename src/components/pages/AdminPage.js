@@ -2,18 +2,24 @@ import React, { useState, useEffect } from "react";
 import SensorTableAdmin from "../sensors/SensorTableAdmin";
 import {
   fetchSensorsData,
-  handleToggleState,
-  handleToggleDetectionStatus,
+  handleSensorToggleState,
+  handleSensorToggleDetectionStatus,
 } from "../sensors/SensorHandlers";
+import { fetchDevicesData, handleDeviceToggleState } from "../devices/DeviceHandlers";
 import AdminLayout from "../layout/AdminLayout";
+import DeviceTable from "../devices/DeviceTable";
 
 function AdminPage() {
   const [sensors, setSensors] = useState([]);
+  const [devices, setDevices] = useState([]);
 
   useEffect(() => {
     const fetchSensorDataAndPoll = async () => {
       const sensorsData = await fetchSensorsData();
       setSensors(sensorsData);
+
+      const devicesData = await fetchDevicesData();
+      setDevices(devicesData);
 
       const intervalId = setInterval(async () => {
         const sensorsData = await fetchSensorsData();
@@ -32,10 +38,16 @@ function AdminPage() {
       <SensorTableAdmin
         sensors={sensors}
         onToggleState={(updatedSensor) =>
-          handleToggleState(updatedSensor, sensors, setSensors)
+          handleSensorToggleState(updatedSensor, sensors, setSensors)
         }
         onToggleDetectionStatus={(updatedSensor) =>
-          handleToggleDetectionStatus(updatedSensor, sensors, setSensors)
+          handleSensorToggleDetectionStatus(updatedSensor, sensors, setSensors)
+        }
+      />
+      <DeviceTable
+        devices={devices}
+        onToggleState={(updatedDevice) =>
+          handleDeviceToggleState(updatedDevice, devices, setDevices)
         }
       />
     </div>
