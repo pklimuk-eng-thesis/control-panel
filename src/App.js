@@ -5,10 +5,12 @@ import AdminPage from "./components/pages/AdminPage";
 import DefaultPage from "./components/pages/DefaultPage";
 import SensorHistoryPage from "./components/pages/SensorHistoryPage";
 import DeviceHistoryPage from "./components/pages/DeviceHistoryPage";
+import ACHistoryPage from "./components/pages/ACHistoryPage";
 
 function App() {
   const [sensors] = useState([]);
   const [devices] = useState([]);
+  const [acs] = useState([]);
 
   return (
     <div>
@@ -17,11 +19,11 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<DefaultPage sensors={sensors} devices={devices} />}
+              element={<DefaultPage sensors={sensors} devices={devices} acs={acs} />}
             />
             <Route
               path="/admin"
-              element={<AdminPage sensors={sensors} devices={devices} />}
+              element={<AdminPage sensors={sensors} devices={devices} acs={acs} />}
             />
             <Route
               path="/sensor/history/:sensorServiceName"
@@ -30,6 +32,10 @@ function App() {
             <Route
               path="/device/history/:deviceServiceName"
               element={<DeviceHistoryPage devices={devices} />}
+            />
+            <Route
+              path="/ac/history/:acServiceName"
+              element={<ACHistoryPage acs={acs} />}
             />
           </Routes>
         </div>

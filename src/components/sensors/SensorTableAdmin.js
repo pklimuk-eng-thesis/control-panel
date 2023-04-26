@@ -17,7 +17,7 @@ function SensorTableAdmin({ sensors, onToggleState, onToggleDetectionStatus }) {
         <tbody>
           {sensors.map((sensor) => (
             <tr key={sensor.id}>
-              <td>{sensor.name}</td>
+              <td className={styles.boldText}>{sensor.name}</td>
               <td>
                 <button
                   className={`${styles.button} ${

@@ -16,7 +16,7 @@ function DeviceTable({ devices, onToggleState }) {
         <tbody>
           {devices.map((device) => (
             <tr key={device.id}>
-              <td>{device.name}</td>
+              <td className={styles.boldText}>{device.name}</td>
               <td>
                 <button
                   className={`${styles.button} ${
